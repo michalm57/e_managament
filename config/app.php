@@ -171,6 +171,7 @@ return [
         \Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Modules\Users\Providers\UsersServiceProvider::class,
+        Modules\Projects\Providers\ProjectsServiceProvider::class,
     ])->toArray(),
 
     /*
