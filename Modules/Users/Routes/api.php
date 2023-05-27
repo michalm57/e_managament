@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Modules\Users\Http\Controllers\AuthController;
+use Modules\Users\Http\Controllers\ForgotController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,8 @@ Route::middleware('auth:api')->get('/users', function (Request $request) {
 Route::group(['middleware' => 'api', 'prefix' => 'auth'], function(){
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/forgot', [ForgotController::class, 'forgot']);
+    Route::post('/reset', [ForgotController::class, 'reset']);
     Route::get('/user', [AuthController::class, 'user']);
     Route::post('/logout', [AuthController::class, 'logout']);
 });
