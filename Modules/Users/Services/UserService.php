@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Hash;
-
 use Modules\Users\Entities\User;
 
 class UserService
@@ -39,7 +38,7 @@ class UserService
         ]);
     }
 
-    /**
+    /**     
      * Send a "forgot password" email to the specified email address.
      *
      * @param string $email The email address to send the email to.
