@@ -84,13 +84,13 @@ class ForgotController extends Controller
         $data = $validator->validated();
         $token = $data['token'];
 
-        if(!$passwordsReset = $this->validatePasswordResetToken($token)){
+        if(!$passwordsReset = $this->service->validatePasswordResetToken($token)){
             return response([
                 'message' => 'Invalid token!',
             ], Response::HTTP_BAD_REQUEST);
         }
 
-        if(!$user = $this->getUserByEmail($passwordsReset->email)){
+        if(!$user = $this->service->getUserByEmail($passwordsReset->email)){
             return response([
                 'message' => 'User doeesn\'t exists!',
             ], Response::HTTP_BAD_REQUEST);
