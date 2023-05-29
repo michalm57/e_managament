@@ -53,16 +53,19 @@ class ForgotController extends Controller
         $token = Str::random(30);
 
         try {
-            $this->service->insertPasswordResetToken($email, $token);
+            if ($this->service->lastEmailWasSendLessThan($email, 1)) {
+                return response([
+                    'message' => 'Try again later!'
+                ], Response::HTTP_NOT_FOUND);
+            }
 
-            //TODO:
-            // If token already exists, remove and create new.
-            //Provide limits of possibility to reset password (2 per hour).
+            $this->service->deletePasswordResetToken($email, $token);
+            $this->service->insertPasswordResetToken($email, $token);
             $this->service->sendForgotPasswordEmail($email, $token);
 
             return response([
-                'message' => 'Check your email!'
-            ]);
+                'message' => 'Check your email!',
+            ], Response::HTTP_OK);
         } catch (\Exception $exception) {
             return response([
                 'message' => $exception->getMessage()
@@ -84,13 +87,13 @@ class ForgotController extends Controller
         $data = $validator->validated();
         $token = $data['token'];
 
-        if(!$passwordsReset = $this->service->validatePasswordResetToken($token)){
+        if (!$passwordsReset = $this->service->validatePasswordResetToken($token)) {
             return response([
                 'message' => 'Invalid token!',
             ], Response::HTTP_BAD_REQUEST);
         }
 
-        if(!$user = $this->service->getUserByEmail($passwordsReset->email)){
+        if (!$user = $this->service->getUserByEmail($passwordsReset->email)) {
             return response([
                 'message' => 'User doeesn\'t exists!',
             ], Response::HTTP_BAD_REQUEST);

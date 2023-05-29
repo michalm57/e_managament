@@ -38,6 +38,20 @@ class UserService
         ]);
     }
 
+    /**
+     * Removing a record in the password_reset_tokens table.
+     *
+     * @param string $email The email associated with the password reset token.
+     * @param string $token The password reset token.
+     * @return void
+     */
+    public function deletePasswordResetToken(string $email, string $token): void
+    {
+        DB::table('password_reset_tokens')
+            ->where('email', $email)
+            ->delete();
+    }
+
     /**     
      * Send a "forgot password" email to the specified email address.
      *
@@ -86,5 +100,23 @@ class UserService
     {
         $user->password = Hash::make($password);
         return $user->save();
+    }
+
+    /**
+     * Checking last sended email date. Returning true if 
+     * date was less than count of hours passed in second param.
+     *
+     * @param string $email The new password.
+     * @param int $hours The new password.
+     * @return bool  Returning true if date was less than count of hours passed in second param.
+     */
+    public function lastEmailWasSendLessThan(string $email, int $hours): bool
+    {
+        $resetToken = DB::table('password_reset_tokens')
+            ->where('email', $email)
+            ->where('created_at', '>=', Carbon::now()->subHours($hours)->toDateTimeString())
+            ->first();
+
+        return !is_null($resetToken);
     }
 }
