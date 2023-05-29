@@ -55,8 +55,8 @@ class ForgotController extends Controller
         try {
             if ($this->service->lastEmailWasSendLessThan($email, 1)) {
                 return response([
-                    'message' => 'Try again later!'
-                ], Response::HTTP_NOT_FOUND);
+                    'message' => 'Email was send. Try again later!'
+                ], Response::HTTP_BAD_REQUEST);
             }
 
             $this->service->deletePasswordResetToken($email, $token);
