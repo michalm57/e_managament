@@ -13,6 +13,15 @@ class ProjectStatus extends Model
     protected $table = 'project_statuses';
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+    ];
+
+    /**
      * Get the values of the ProjectStatusEnum.
      *
      * @return array
