@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Modules\Projects\Entities\Project;
+use Modules\Projects\Entities\ProjectUser;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
@@ -67,5 +69,15 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    /**
+     * User might have many projects.
+     *
+     * @return array
+     */
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class, ProjectUser::class, 'user_id', 'id');
     }
 }
