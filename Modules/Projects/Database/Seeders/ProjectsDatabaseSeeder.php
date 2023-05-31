@@ -3,7 +3,8 @@
 namespace Modules\Projects\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
+use Modules\Projects\Entities\Project;
+use Modules\Projects\Entities\ProjectStatus;
 
 class ProjectsDatabaseSeeder extends Seeder
 {
@@ -14,8 +15,42 @@ class ProjectsDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
+        $this->insertRandomProjects(10);
+    }
 
-        // $this->call("OthersTableSeeder");
+     /**
+     * Inserts random projects in the number given in the parameter $countOfProjects
+     *
+     * @param int $countOfProjects
+     * @return void
+     */
+    public function insertRandomProjects($countOfProjects)
+    {
+        for ($i = 0; $i < $countOfProjects; $i++) {
+            $projectData = $this->generateRandomProject();
+
+            Project::create($projectData);
+        }
+    }
+
+
+    /**
+     * Generating random project with Faker
+     *
+     * @param int $countOfRandomUsers
+     * @return array
+     */
+    public function generateRandomProject()
+    {
+        $faker = \Faker\Factory::create();
+        $projectStatuses = ProjectStatus::all()->pluck('id')->toArray();
+
+        return [
+            'name' => $faker->company(),
+            'description' => $faker->sentence($faker->randomDigitNotNull()),
+            'project_status_id' => $faker->randomElement($projectStatuses),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ];
     }
 }
