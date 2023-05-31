@@ -4,8 +4,9 @@ namespace Modules\Projects\Entities;
 
 use App\Modules\Projects\Enums\ProjectStatusEnum;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Users\Entities\User;
 
-class Product extends Model
+class Project extends Model
 {
     /**
      * @var string
@@ -38,5 +39,13 @@ class Product extends Model
     public function status()
     {
         return $this->hasOne(ProjectStatus::class);
+    }
+
+    /**
+     * Get the status associated with the project.
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class, ProjectUser::class, 'project_id', 'id');
     }
 }
