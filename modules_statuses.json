@@ -1,4 +1,5 @@
 {
     "Users": true,
-    "Projects": true
+    "Projects": true,
+    "Tasks": true
 }
