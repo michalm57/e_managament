@@ -48,4 +48,14 @@ class Project extends Model
     {
         return $this->belongsToMany(User::class, ProjectUser::class, 'project_id', 'id');
     }
+
+    /**
+     * Getting random user id.
+     *
+     * @return int
+     */
+    public static function getRandomId()
+    {
+        return self::inRandomOrder()->value('id');
+    }
 }
