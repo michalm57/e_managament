@@ -172,6 +172,7 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Modules\Users\Providers\UsersServiceProvider::class,
         Modules\Projects\Providers\ProjectsServiceProvider::class,
+        Modules\Tasks\Providers\TasksServiceProvider::class,
     ])->toArray(),
 
     /*

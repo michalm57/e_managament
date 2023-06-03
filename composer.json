@@ -29,7 +29,8 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
             "Modules\\Users\\": "Modules/Users/",
-            "Modules\\Projects\\": "Modules/Projects/"
+            "Modules\\Projects\\": "Modules/Projects/",
+            "Modules\\Tasks\\": "Modules/Tasks/"
         }
     },
     "autoload-dev": {
