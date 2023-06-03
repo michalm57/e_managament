@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Modules\Projects\Database\Seeders\TaskPrioritiesSeeder;
-use Modules\Projects\Entities\TaskPriority;
+use Modules\Tasks\Entities\TaskPriority;
 
 return new class extends Migration
 {
@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         echo TaskPrioritiesSeeder::class . " - running start\n";
-        Artisan::call('db:seed', array('--class' => 'Modules\\Projects\\Database\\Seeders\\TaskPrioritiesSeeder', '--force' => true));
+        Artisan::call('db:seed', array('--class' => 'Modules\\Tasks\\Database\\Seeders\\TaskPrioritiesSeeder', '--force' => true));
         echo TaskPrioritiesSeeder::class . " - seeding completed\n";
     }
 

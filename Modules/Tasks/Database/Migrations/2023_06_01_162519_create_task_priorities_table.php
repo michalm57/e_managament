@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Modules\Projects\Entities\TaskPriority;
+use Modules\Tasks\Entities\TaskPriority;
 
 return new class extends Migration
 {

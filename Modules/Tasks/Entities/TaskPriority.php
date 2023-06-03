@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Projects\Entities;
+namespace Modules\Tasks\Entities;
 
 use Illuminate\Database\Eloquent\Model;
-use Modules\Projects\Enums\TaskPriorityEnum;
+use Modules\Tasks\Enums\TaskPriorityEnum;
 
 class TaskPriority extends Model
 {
@@ -22,7 +22,7 @@ class TaskPriority extends Model
     ];
 
     /**
-     * Get the values of the ProjectStatusEnum.
+     * Get the values of the TaskPriorotyEnum.
      *
      * @return array
      */
@@ -32,7 +32,7 @@ class TaskPriority extends Model
     }
 
     /**
-     * Get the names of the ProjectStatusEnum.
+     * Get the names of the TaskPriorotyEnum.
      *
      * @return array
      */

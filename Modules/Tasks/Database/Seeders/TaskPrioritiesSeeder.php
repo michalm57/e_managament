@@ -1,9 +1,9 @@
 <?php
 
-namespace Modules\Projects\Database\Seeders;
+namespace Modules\Tasks\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Modules\Projects\Entities\TaskPriority;
+use Modules\Tasks\Entities\TaskPriority;
 
 class TaskPrioritiesSeeder extends Seeder
 {

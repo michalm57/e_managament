@@ -1,15 +1,16 @@
 <?php
 
-namespace Modules\Projects\Entities;
+namespace Modules\Tasks\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Modules\Tasks\Enums\TaskTypeEnum;
 
 class TaskType extends Model
 {
     /**
      * @var string
      */
-    protected $table = 'task_type';
+    protected $table = 'task_types';
 
     /**
      * The attributes that are mass assignable.
@@ -21,7 +22,7 @@ class TaskType extends Model
     ];
 
     /**
-     * Get the values of the ProjectStatusEnum.
+     * Get the values of the TaskTypeEnum.
      *
      * @return array
      */
@@ -31,7 +32,7 @@ class TaskType extends Model
     }
 
     /**
-     * Get the names of the ProjectStatusEnum.
+     * Get the names of the TaskTypeEnum.
      *
      * @return array
      */

@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Projects\Enums;
+namespace Modules\Tasks\Enums;
 
 enum TaskTypeEnum: string
 {
