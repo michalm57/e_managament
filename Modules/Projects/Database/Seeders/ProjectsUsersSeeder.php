@@ -38,7 +38,6 @@ class ProjectsUsersSeeder extends Seeder
     /**
      * Generating random project_user
      *
-     * @param int $countOfRandomUsers
      * @return array
      */
     public function generateRandomProjectUser()
