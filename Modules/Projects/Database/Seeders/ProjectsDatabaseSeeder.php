@@ -37,7 +37,6 @@ class ProjectsDatabaseSeeder extends Seeder
     /**
      * Generating random project with Faker
      *
-     * @param int $countOfRandomUsers
      * @return array
      */
     public function generateRandomProject()
