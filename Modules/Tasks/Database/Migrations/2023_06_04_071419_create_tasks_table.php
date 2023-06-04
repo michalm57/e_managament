@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->text('description')->nullable();
             $table->float('estimation', 4, 2)->nullable();            
             $table->float('spend_time', 4, 2)->nullable();            
             $table->unsignedBigInteger('priority_id')->nullable();            
