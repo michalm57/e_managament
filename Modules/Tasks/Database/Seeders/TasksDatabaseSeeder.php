@@ -23,7 +23,7 @@ class TasksDatabaseSeeder extends Seeder
      /**
      * Inserts random tasks in the number given in the parameter $countOfTasks
      *
-     * @param int $countOfProjects
+     * @param int $countOfTasks
      * @return void
      */
     public function insertRandomTasks($countOfTasks)
