@@ -22,7 +22,7 @@ class ProjectsUsersSeeder extends Seeder
      /**
      * Inserts random project_users records in the number given in the parameter $countOfProjectsUsers
      *
-     * @param int $countOfProjects
+     * @param int $countOfProjectsUsers
      * @return void
      */
     public function insertRandomProjectUser($countOfProjectsUsers)
