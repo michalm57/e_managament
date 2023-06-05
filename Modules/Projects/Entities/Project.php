@@ -21,7 +21,7 @@ class Project extends Model
     protected $fillable = [
         'name',
         'description',
-        'password',
+        'project_status_id',
     ];
 
     /**

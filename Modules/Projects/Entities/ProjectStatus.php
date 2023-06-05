@@ -40,4 +40,14 @@ class ProjectStatus extends Model
     {
         return array_column(ProjectStatusEnum::cases(), 'name');
     }
+
+    /**
+     * Get statuses id's.
+     *
+     * @return array
+     */
+    public static function getStatusesIds(): array
+    {
+        return array_column(self::all()->toArray(), 'id');
+    }
 }
