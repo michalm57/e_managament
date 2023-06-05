@@ -25,4 +25,14 @@ class Task extends Model
         'type_id',
         'status_id',
     ];
+
+    /**
+     * Getting random task id.
+     *
+     * @return int
+     */
+    public static function getRandomId()
+    {
+        return self::inRandomOrder()->value('id');
+    }
 }
