@@ -2,11 +2,17 @@
 
 namespace Modules\Projects\Services;
 
+use Illuminate\Support\Facades\Auth;
 
 class ProjectService
 {
-    public function getAllUserProjects($user)
+    /**
+     * Get all projects for the currently authenticated user.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection The collection of projects.
+     */
+    public function getAllUserProjects()
     {
-        return $user->projects();
+        return Auth::user()->projects()->get();
     }
 }
