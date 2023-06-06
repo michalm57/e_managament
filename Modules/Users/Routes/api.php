@@ -15,11 +15,6 @@ use Modules\Users\Http\Controllers\ForgotController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::middleware('auth:api')->get('/users', function (Request $request) {
-    return $request->user();
-});
-
 Route::group(['middleware' => 'api', 'prefix' => 'auth'], function(){
     Route::post('/register', [AuthController::class, 'register'])->name('user.register');
     Route::post('/login', [AuthController::class, 'login'])->name('user.login');
