@@ -50,4 +50,15 @@ class ProjectStatus extends Model
     {
         return array_column(self::all()->toArray(), 'id');
     }
+
+    /**
+     * Get status id by passed ProjectStatusEnum $status.
+     *
+     * @param ProjectStatusEnum $status
+     * @return int
+     */
+    public static function getStatusId($status): int
+    {
+        return self::where('name', $status)->value('id');
+    }
 }
