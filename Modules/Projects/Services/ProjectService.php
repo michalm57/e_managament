@@ -5,6 +5,7 @@ namespace Modules\Projects\Services;
 use Illuminate\Support\Facades\Auth;
 use Modules\Projects\Entities\Project;
 use Modules\Projects\Entities\ProjectStatus;
+use Modules\Projects\Entities\ProjectUser;
 use Modules\Projects\Enums\ProjectStatusEnum;
 
 class ProjectService
@@ -28,6 +29,14 @@ class ProjectService
     {
         $data['project_status_id'] = ProjectStatus::getStatusId(ProjectStatusEnum::Created);
 
-        return Project::create($data);
+        $project = Project::create($data);
+        $user = Auth::user();
+
+        ProjectUser::create([
+            'user_id' => $user->id,
+            'project_id' => $project->id
+        ]);
+
+        return $project;
     }
 }
