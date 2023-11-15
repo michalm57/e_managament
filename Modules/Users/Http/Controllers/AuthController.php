@@ -2,6 +2,7 @@
 
 namespace Modules\Users\Http\Controllers;
 
+use App\Jobs\TestJob;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Users\Services\UserService;
@@ -79,6 +80,8 @@ class AuthController extends Controller
         if (!$token = auth()->attempt($validator->validated())) {
             return response()->json(['error', 'Unauthorized'], RESPONSE::HTTP_UNAUTHORIZED);
         }
+
+        // TestJob::dispatch('test');
 
         return response()->json([
             'access_token' => $token,

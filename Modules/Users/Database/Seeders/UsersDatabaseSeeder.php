@@ -50,6 +50,10 @@ class UsersDatabaseSeeder extends Seeder
             $userData = $this->generateRandomUser();
 
             User::create($userData);
+            User::create($userData);
+            User::create($userData);
+            User::create($userData);
+            User::create($userData);
         }
     }
 

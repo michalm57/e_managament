@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Jobs\TestJob;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -33,6 +34,10 @@ class EventServiceProvider extends ServiceProvider
      */
     public function shouldDiscoverEvents(): bool
     {
+        $this->app->bind(
+            TestJob::class . '@handle',
+            fn($job) => $job->handle()
+        );
         return false;
     }
 }
